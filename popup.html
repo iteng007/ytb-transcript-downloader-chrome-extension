@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Playlist Info</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      width: 400px;
+      margin: 0;
+      padding: 0;
+    }
+    .loader {
+      border: 2px solid #f3f3f3;
+      border-top: 2px solid #3498db;
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      animation: spin 1s linear infinite;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+  <script src="popup.js" defer></script>
+</head>
+<body class="bg-white font-sans">
+  <div class="rounded-t-xl overflow-hidden">
+    <div class="p-6 bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+      <h1 class="text-2xl font-bold mb-2">YouTube Playlist Info</h1>
+      <p class="text-sm opacity-80">轻松下载YouTube视频字幕</p>
+    </div>
+    <div class="p-6">
+      <div id="info" class="mb-6"></div>
+      <button id="downloadBtn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 mb-4">
+        下载字幕
+      </button>
+      <button id="generateWordListBtn" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
+        生成单词列表
+      </button>
+    </div>
+    <div id="playlist" class="px-6 pb-6">
+      <h2 class="text-xl font-semibold mb-4">播放列表</h2>
+      <div class="mb-4">
+        <label class="inline-flex items-center cursor-pointer">
+          <input type="checkbox" id="selectAll" class="form-checkbox h-5 w-5 text-blue-600 transition duration-150 ease-in-out">
+          <span class="ml-2 text-gray-700">全选/取消全选</span>
+        </label>
+      </div>
+      <ul id="playlist-items" class="space-y-3"></ul>
+    </div>
+  </div>
+</body>
+</html>

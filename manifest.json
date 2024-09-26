@@ -1,0 +1,32 @@
+{
+    "manifest_version": 3,
+    "name": "YouTube Playlist Info",
+    "version": "1.0",
+    "description": "读取YouTube播放列表和视频信息",
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "tabs",
+        "storage"
+    ],
+    "host_permissions": [
+        "*://*.youtube.com/*",
+        "*://*.googleapis.com/*"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["*://*.youtube.com/*"],
+        "js": ["content.js"],
+        "run_at": "document_end"
+      }
+    ],
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "externally_connectable": {
+      "matches": ["*://*.youtube.com/*"]
+    }
+  }
